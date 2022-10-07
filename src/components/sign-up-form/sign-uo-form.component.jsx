@@ -9,10 +9,14 @@ const defaultFormFields = {
 
 const SignUpForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
-    const { displayName, email, password, confirmPasswrd } = formFields;
+    const { displayName, email, password, confirmPassword } = formFields;
+
+    console.log(formFields);
 
     const handleChange = (event) => {
-        const {name} = event;
+        const { name, value } = event.target;
+
+        setFormFields({ ...formFields, [name]: value });
     };
 
     return (
@@ -20,16 +24,40 @@ const SignUpForm = () => {
             <h1>Sign up with your eamil and password</h1>
             <form onSubmit={() => {}}>
                 <label>Display Name</label>
-                <input type='text' required onChange={handleChange} name="displayName" />
+                <input 
+                    type='text' 
+                    required 
+                    onChange={handleChange}
+                    name="displayName" 
+                    value={displayName}
+                />
 
                 <label>Email</label>
-                <input type='email' required onChange={handleChange} name="email" />
+                <input 
+                    type='email'
+                    required 
+                    onChange={handleChange} 
+                    name="email" 
+                    value={email}
+                 />
 
                 <label>Password</label>
-                <input type='password' required onChange={handleChange} name="password" />
+                <input 
+                    type='password' 
+                    required 
+                    onChange={handleChange} 
+                    name="password"
+                    value={password} 
+                />
 
                 <label>Confirm Password</label>
-                <input type='password' required onChange={handleChange} name="confirmPassword"/>
+                <input 
+                    type='password' 
+                    required 
+                    onChange={handleChange} 
+                    name="confirmPassword"
+                    value={confirmPassword}
+                />
                 <button type="submit">Sign Up</button>
             </form>
         </div>
