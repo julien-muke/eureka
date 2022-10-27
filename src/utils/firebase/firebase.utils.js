@@ -78,13 +78,13 @@ const firebaseConfig = {
 
     const userDocRef = doc(db, 'users', userAuth.uid);
 
-    const userSnapShot = await getDoc(userDocRef);
+    const userSnapshot = await getDoc(userDocRef);
 
     //if user data does not exists
 
     // create /set the document with the data from userAuth in my collection
 
-   if(!userSnapShot.exists()) {
+   if(!userSnapshot.exists()) {
     const { displayName, email } = userAuth;
     const createdAt = new Date();
 
@@ -100,11 +100,8 @@ const firebaseConfig = {
     }
    }
 
-     // if user data exists
 
-    // return userDocRef
-
-    return userDocRef;
+    return userSnapshot;
 
   };
 
